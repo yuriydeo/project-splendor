@@ -61,7 +61,7 @@ namespace project_splendor
                 return false;
             }
 
-            return this.Stash[Color.Black] == state.Stash[Color.Black] &&
+            var result = this.Stash[Color.Black] == state.Stash[Color.Black] &&
                 this.Stash[Color.Red] == state.Stash[Color.Red] &&
                 this.Stash[Color.Green] == state.Stash[Color.Green] &&
                 this.Stash[Color.Blue] == state.Stash[Color.Blue] &&
@@ -69,6 +69,8 @@ namespace project_splendor
                 this.MovesCount == state.MovesCount &&
                 this.TakenCards.Count == state.TakenCards.Count &&
                 this.TakenCards.TrueForAll(c => state.TakenCards.Contains(c));
+
+            return result;
         }
 
         public List<string> Log { get; }

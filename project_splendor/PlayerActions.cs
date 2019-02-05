@@ -150,6 +150,7 @@ namespace project_splendor
             sb.Remove(sb.Length - 1, 1);
             player.TakenCards.Add(Card);
             player.Log.Add(sb.ToString());
+            player.MovesCount++;
 
             return new List<PlayerState>() { player };
         }

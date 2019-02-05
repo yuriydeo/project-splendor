@@ -14,7 +14,7 @@ namespace project_splendor
             outcomes = outcomes.Distinct().OrderBy(p => p.MovesCount).ThenBy(p => p.Score).ToList();
             Console.WriteLine($"Total outcomes simulated: {outcomes.Count()}");
             var best = outcomes.First();
-            Console.WriteLine($"Best result: {best.Score} in {best.MovesCount}");
+            Console.WriteLine($"Best result: {best.Score} points in {best.MovesCount} moves");
             Console.ReadKey();
             Console.ReadKey();
             Console.WriteLine("Outcome log:");

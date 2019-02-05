@@ -66,18 +66,18 @@ namespace project_splendor
                 result.Add(new TakeTwoAction(col));
             }
 
-            var temp3colors = new List<Tuple<Color, Color, Color>>();
-            for (int i = 7; i <= 28; i++)
-            {
-                var colors = GetColors(i);
-                if (colors.Count == 3)
-                    temp3colors.Add(new Tuple<Color, Color, Color>(colors[0], colors[1], colors[2]));
+            //var temp3colors = new List<Tuple<Color, Color, Color>>();
+            //for (int i = 7; i <= 28; i++)
+            //{
+            //    var colors = GetColors(i);
+            //    if (colors.Count == 3)
+            //        temp3colors.Add(new Tuple<Color, Color, Color>(colors[0], colors[1], colors[2]));
 
-            }
-            foreach (var tuple in temp3colors.Distinct())
-            {
-                result.Add(new TakeThreeAction(tuple.Item1, tuple.Item2, tuple.Item3));
-            }
+            //}
+            //foreach (var tuple in temp3colors.Distinct())
+            //{
+            //    result.Add(new TakeThreeAction(tuple.Item1, tuple.Item2, tuple.Item3));
+            //}
 
             foreach (Card card in Cards)
             {
@@ -133,8 +133,13 @@ namespace project_splendor
             {
                 result.AddRange(action.Execute(player));
             }
+            var newResult = new List<PlayerState>();
+            foreach (var state in result.Distinct())
+            {
+                newResult.AddRange(Playout(state, MaxMoves, RequiredPoints));
+            }
 
-            return result;
+            return newResult.Distinct();
         }
     }
 }
